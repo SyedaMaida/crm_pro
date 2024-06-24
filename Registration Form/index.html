@@ -1,0 +1,169 @@
+{% comment %}
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Link to external CSS (Iconscout) -->
+    <!-- <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"> -->
+    
+    <title>Responsive Registration Form</title>
+</head>
+<body>
+    <div class="container">
+      
+
+        <!-- multistep form -->
+        <form id="msform">
+        
+            <!-- progressbar -->
+            <ul id="progressbar">
+                <li class="active">Account Setup</li>
+                <li>Company details</li>
+                <li>Personal Details</li>
+            </ul>
+            <!-- fieldsets -->
+            <fieldset>
+                <h2 class="fs-title">Create your account</h2>
+                <h3 class="fs-subtitle">Enter your account details</h3>
+                <input type="text" name="email" placeholder="Email" />
+                <input type="password" name="pass" placeholder="Password" />
+                <input type="password" name="cpass" placeholder="Confirm Password" />
+                <input type="button" name="next" class="next action-button" value="Next" />
+            </fieldset>
+            <fieldset>
+                <h2 class="fs-title">Company Details</h2>
+                <h3 class="fs-subtitle">Enter your Company details</h3>
+
+
+                <input type="text" name="CompanyName" placeholder="Company name" />
+                <input type="text" name="Industry" placeholder="Industry" />
+                <input type="text" name="NoEmp" placeholder="Number of Employees" />
+                <select name="role" required> <!-- Added name attribute -->
+                    <option disabled selected>Your role</option>
+                    <option>Admin</option>
+                    <option>Sales Representative</option>
+                    <option>Customer Support Representative</option>
+                    <option>Manager</option>
+                    <option>Student/Intern</option>
+                    <option>Others</option>
+                </select>
+                <input type="button" name="previous" class="previous action-button" value="Previous" />
+                <input type="button" name="next" class="next action-button" value="Next" />
+            </fieldset>
+            <fieldset>
+                <h2 class="fs-title">Personal Details</h2>
+                <h3 class="fs-subtitle">Fill in your personal information</h3>
+                <input type="text" name="fname" placeholder="First Name" />
+                <input type="text" name="lname" placeholder="Last Name" />
+                <!-- <input type="text" name="phone" placeholder="Phone" /> -->
+                <textarea name="phone" placeholder="Phone"></textarea>
+                <input type="button" name="previous" class="previous action-button" value="Previous" />
+                <a href="https://twitter.com/GoktepeAtakan" class="submit action-button" target="_top">Submit</a>
+            </fieldset>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Include jQuery Easing Plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <!-- Link to your JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
+{% endcomment %}
+
+
+
+
+
+ {% comment %} <!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    
+    <!-- Link to external CSS (Iconscout) -->
+     {% comment %} <link rel="stylesheet" href='{% load static"https://unicons.iconscout.com/release/v4.0.0/css/line.css" %}'> {% endcomment %}
+    
+       {% comment %}  <title>Responsive Registration Form</title>
+</head>
+<body>
+    <div class="container">
+      
+
+        <!-- multistep form -->
+        <form id="msform" method='POST' action='register'>
+            {% csrf_token %}
+            {%for message in messages%}
+<h5>{{message}}</h5>
+{%endfor%}
+            <!-- progressbar -->
+            <ul id="progressbar">
+                <li class="active">Account Setup</li>
+                <li>Company details</li>
+                <li>Personal Details</li>
+            </ul>
+            <!-- fieldsets -->
+            <fieldset>
+                <h2 class="fs-title">Personal Details</h2>
+                <h3 class="fs-subtitle">Fill in your personal information</h3>
+                <input type="text" name="name" placeholder="First Name" />
+                <input type="text" name="userID" placeholder="User ID" />
+                <!-- <input type="text" name="phone" placeholder="Phone" /> -->
+                <textarea name="phone" placeholder="Phone"></textarea>
+                <input type="button" name="next" class="next action-button" value="Next" />
+
+            </fieldset>
+            <fieldset>
+                <h2 class="fs-title">Create your account</h2>
+                <h3 class="fs-subtitle">Enter your account details</h3>
+                <input type="email" name="email" placeholder="Email" />
+                <input type="password" name="password" placeholder="Password" />
+                <input type="password" name="cpassword" placeholder="Confirm Password" />
+                <input type="button" name="next" class="previous action-button" value="Previous" />
+                <input type="button" name="next" class="next action-button" value="Next" />
+
+            </fieldset>
+            <fieldset>
+                <h2 class="fs-title">Company Details</h2>
+                <h3 class="fs-subtitle">Enter your Company details</h3>
+
+
+                <input type="text" name="company" placeholder="Company name" />
+                <input type="text" name="industry" placeholder="Industry" />
+                <input type="text" name="noEmp" placeholder="Number of Employees" />
+                <select name="role" > <!-- Added name attribute -->
+                    <option disabled selected>Your role</option>
+                    <option>Admin</option>
+                    <option>Sales Representative</option>
+                    <option>Customer Support Representative</option>
+                    <option>Manager</option>
+                    <option>Student/Intern</option>
+                    <option>Others</option>
+                </select>
+                <input type="button" name="previous" class="previous action-button" value="Previous" />
+                <input class="submit action-button" type='submit'/>
+                {% comment %} <a href="https://twitter.com/GoktepeAtakan" class="submit action-button" target="_top">Submit</a>
+            </fieldset>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Include jQuery Easing Plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <!-- Link to your JavaScript file -->
+    <script src="{% static 'script.js' %}"></script>
+</body>
+</html> {% endcomment %}
