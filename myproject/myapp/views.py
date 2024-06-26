@@ -9,6 +9,12 @@ from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 from .forms import CustomUserCreationForm
 
+def index(request):
+    return render(request,'index.html')
+
+def home(request):
+    return render(request, 'home.html')
+
 class RegisterView(CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy("login")
