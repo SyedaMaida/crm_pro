@@ -1,14 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="{% static 'assets/css/register.css' %}">
+    <title>Dual Design Registration form</title>
+</head>
+<body>
+    <div class="container register">
+        <div class="row">
+            <div class="col-md-3 register-left">
+                <img src="{% static 'assets/images/Logo.png' %}" alt="">
+                <h3>Welcome</h3>
+                <p>You are 30 seconds away from earning your own money</p>
+                <a href="{% url 'login' %}" class="btn btn-login">Login</a><br/>
+            </div>
 
-{% extends "base.html" %}
+            <div class="col-md-9 register-right">
+                <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link active" id="home-tab" data-toggle="tab" role="tab" aria-controls="home" aria-selected="true">Employee</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#profile" class="nav-link" id="profile-tab" data-toggle="tab" role="tab" aria-controls="profile" aria-selected="false">Owner</a>
+                    </li>
+                </ul>
 
-{% block title %}Sign Up{% endblock %}
+                <div class="tab-content" id="myTabContent">
+                    <!-- Employee Registration Form -->
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <h3 class="register-heading">Apply as an Employee</h3>
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <input type="hidden" name="user_type" value="employee">
+                            <div class="row register-form">
+                                <div class="col-md-6">
+                                    {% for field in user_form %}
+                                        <div class="form-group">
+                                            {{ field.errors }}
+                                            {{ field.label_tag }} {{ field }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <div class="col-md-6">
+                                    {% for field in employee_form %}
+                                        <div class="form-group">
+                                            {{ field.errors }}
+                                            {{ field.label_tag }} {{ field }}
+                                        </div>
+                                    {% endfor %}
+                                    <input type="submit" value="Register" class="btnRegister">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
 
-{% block content %}
-<h2>Sign Up</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Sign Up</button>
-</form>
-{% endblock %}
-
+                    <!-- Owner Registration Form -->
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <h3 class="register-heading">Apply as an Owner</h3>
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <input type="hidden" name="user_type" value="owner">
+                            <div class="row register-form">
+                                <div class="col-md-6">
+                                    {% for field in user_form %}
+                                        <div class="form-group">
+                                            {{ field.errors }}
+                                            {{ field.label_tag }} {{ field }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <div class="col-md-6">
+                                    {% for field in owner_form %}
+                                        <div class="form-group">
+                                            {{ field.errors }}
+                                            {{ field.label_tag }} {{ field }}
+                                        </div>
+                                    {% endfor %}
+                                    <input type="submit" value="Register" class="btnRegister">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="{% static 'assets/js/script.js' %}"></script>
+</body>
+</html>

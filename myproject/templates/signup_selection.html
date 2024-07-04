@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    
+    <div class="container">
+        <h2 class="mt-5 text-center">Sign up as</h2>
+        <div class="button-container">
+            <a href="{% url 'registerOwner' %}" class="btn btn-primary mr-3">Owner</a>
+            <a href="{% url 'registerEmployee' %}" class="btn btn-secondary">Employee</a>
+        </div>
+    </div>
+    <style>
+              .container {
+            text-align: center;
+            margin-top: 200px; /* Adjust top margin for centering */
+        }
+        .button-container {
+            margin-top: 30px; /* Spacing between buttons */
+        }
+    </style>
+</body>
+</html>

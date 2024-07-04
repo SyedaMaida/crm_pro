@@ -1,0 +1,63 @@
+{% comment %} <!-- templates/registration/registerOwner.html -->
+<!DOCTYPE html>
+{% load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register as Owner</title>
+    <link rel="stylesheet" href="{% static 'assets/css/signup.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="form-container">
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-row">
+                {{ user_form.username.errors }}
+                {{ user_form.username.label_tag }}{{ user_form.username }}
+            </div>
+            <div class="form-row">
+                {{ user_form.email.errors}}
+                {{ user_form.email.label_tag }}{{ user_form.email }}
+            </div>
+            <div class="form-row">
+                {{ user_form.full_name.errors }}
+                {{ user_form.full_name.label_tag }}{{ user_form.full_name }}
+            </div>
+            <div class="form-row">
+                {{ user_form.phone.erros }}
+                {{ user_form.phone.label_tag }}{{ user_form.phone }}
+            </div>
+            <div class="form-row">
+                {{ owner_form.company_name.errors }}
+                {{ owner_form.company_name.label_tag }}{{ owner_form.company_name }}
+            </div>
+            <button type="submit">Register as Owner</button>
+        </form>
+    </div>
+</body>
+</html> {% endcomment %}
+
+
+<form method="post">
+    {% csrf_token %}
+    {{ user_form.as_p }}
+    {{ owner_form.as_p }}
+
+    <!-- Display errors for user_form -->
+    {% for field in user_form %}
+        {% if field.errors %}
+            <div class="error">{{ field.errors }}</div>
+        {% endif %}
+    {% endfor %}
+
+    <!-- Display errors for owner_form -->
+    {% for field in owner_form %}
+        {% if field.errors %}
+            <div class="error">{{ field.errors }}</div>
+        {% endif %}
+    {% endfor %}
+
+    <button type="submit">Submit</button>
+</form>

@@ -1,0 +1,64 @@
+/* styles.css */
+body {
+    background: linear-gradient(to right, #e0f7fa, #80deea);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family:Helvetica, sans-serif ; /* Added a new font style */
+    font-size: 16px; /* Increased the base font size */
+}
+
+.form-container {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    text-align: left;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 15px; /* Increased space between rows */
+}
+
+.form-row label {
+    flex: 1;
+    margin-right: 10px;
+    font-size: 18px; /* Increased label font size */
+}
+
+.form-row input, .form-row select {
+    flex: 2;
+    padding: 10px; /* Increased padding for inputs */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 16px; /* Increased input font size */
+}
+
+button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 18px; /* Increased button font size */
+}
+
+button:hover {
+    background-color: #45a049;
+}
